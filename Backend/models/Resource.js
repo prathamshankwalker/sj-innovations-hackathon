@@ -25,9 +25,13 @@ const ResourceSchema = new mongoose.Schema({
         type:String,
         max:500
     },
-    hours:{
+    hours_worked:{
         type:Number,
-        default:37.5
+        default:0
+    },
+    hours_available:{
+        type:Number,
+        default:150
     },
     fatigue:{
         type:Number,

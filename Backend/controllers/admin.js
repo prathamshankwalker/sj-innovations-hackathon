@@ -1,7 +1,6 @@
 const Admin = require('../models/Admin')
 const {StatusCodes} = require('http-status-codes')
 const {ForbiddenRequestError,UnauthenticatedError} = require('../errors/index')
-const bcrypt = require('bcrypt')
 
 const getUser = async (req,res)=>{
     const user = await Admin.findById(req.params.id);
@@ -14,5 +13,6 @@ const loadUser = async(req,res)=>{
     const {password,updatedAt,...other} = user._doc
     res.status(StatusCodes.OK).json(other)
 }
+
 
 module.exports = {getUser,loadUser}
