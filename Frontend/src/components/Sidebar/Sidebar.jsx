@@ -10,13 +10,30 @@ import Loader from '../Loader/Loader'
 
 const Sidebar = () => {
   const [tab,setTab] = useState(window.location.pathname)
-  //const {user,loading} = useSelector((state)=>state.user);
+  const {user,loading} = useSelector((state)=>state.user);
 
   return (
-    <div className="sidebar">
-        {/* <div>
-          <img src={logo} alt="logo"/>
-        </div> */}
+    user.isSuperAdmin ? (
+      <div className="sidebar">
+        <Link to="/" onClick={()=>setTab("/")}>
+          { tab==="/"?<Dataset style={{color:'black'}}/>:<DatasetOutlined/>}
+          <Typography variant='h6'>Home</Typography>
+        </Link>
+        <Link to="/add-resource" onClick={()=>setTab("/add-resource")}>
+          { tab==="/add-resource"?<AddBox style={{color:'black'}}/>:<AddBoxOutlined/>}
+          <Typography variant='h6'>Resources</Typography>
+        </Link>
+        <Link to="/add-project" onClick={()=>setTab("/add-project")}>
+          { tab==="/add-project"?<Assessment style={{color:'black'}}/>:<AssessmentOutlined/>}
+          <Typography variant='h6'>Projects</Typography>
+        </Link>
+        <Link to="/activity" onClick={()=>setTab("/activity")}>
+          { tab==="/activity"?<PostAdd style={{color:'black'}}/>:<PostAddOutlined/>}
+          <Typography variant='h6'>Activity</Typography>
+        </Link>
+    </div>
+    ) :(
+      <div className="sidebar">
         <Link to="/" onClick={()=>setTab("/")}>
           { tab==="/"?<Dataset style={{color:'black'}}/>:<DatasetOutlined/>}
           <Typography variant='h6'>Projects</Typography>
@@ -33,21 +50,9 @@ const Sidebar = () => {
           { tab==="/leaves"?<PostAdd style={{color:'black'}}/>:<PostAddOutlined/>}
           <Typography variant='h6'>Leaves</Typography>
         </Link>
-        {/* {
-          user?.isAdmin === 'true' &&  
-          <Link to="/add-user" onClick={()=>setTab("/add-user")}>
-            { tab==="/add-user"?<PersonAdd style={{color:'black'}}/>:<PersonAddOutlined/>}
-            <Typography variant='h6'>Add User</Typography>
-          </Link>
-        }
-        {
-          user?.isAdmin === 'true' &&
-          <Link to="/all-users" onClick={()=>setTab("/all-users")}>
-            { tab==="/all-users"?<Group style={{color:'black'}}/>:<GroupOutlined/>}
-            <Typography variant='h6'>All User</Typography>
-          </Link>
-        } */}
     </div>
+    )
+    
   )
 }
 

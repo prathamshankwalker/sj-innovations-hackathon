@@ -4,7 +4,8 @@ import "./AddProject.css";
 function AddProject() {
   return (
     <div>
-      <div className="main-block">
+      <h1>Add Project</h1>
+      {/* <div className="main-block">
         <h1>Add Project</h1>
         <form action="/">
           <div className="account-type">
@@ -45,19 +46,12 @@ function AddProject() {
             </select>
           </div>
           <div className="btn-block">
-            {/* <p>
-              By clicking Register, you agree on our{" "}
-              <a href="https://www.w3docs.com/privacy-policy">
-                Privacy Policy for W3Docs
-              </a>
-              .
-            </p> */}
             <button type="submit" href="/">
               Submit
             </button>
           </div>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }
