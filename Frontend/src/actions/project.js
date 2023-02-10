@@ -10,7 +10,7 @@ export const getUserProjects = ()=>async(dispatch)=>{
         const {data} = await axios.get("/api/v1/admin/project/user/")
         dispatch({
             type:"GetUserProjectsSuccess",
-            payload:data.user
+            payload:data.projects
         })
     } catch (error) {
         console.log(error.response.data,error.response.status)

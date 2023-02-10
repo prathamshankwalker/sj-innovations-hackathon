@@ -9,7 +9,7 @@ export const projectReducer = createReducer(initialState,{
     },
     GetUserProjectsSuccess: (state,action)=>{
         state.projects = action.payload
-        state.loading = true;
+        state.loading = false;
     },
     GetUserProjectsFailure: (state,action)=>{
         state.error = action.payload

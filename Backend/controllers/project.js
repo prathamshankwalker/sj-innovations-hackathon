@@ -31,4 +31,20 @@ const deleteProject = async(req,res)=>{
     res.status(StatusCodes.OK).json({msg:"Project Deleted"})
 }
 
-module.exports = {addProjectSuper,deleteProject}
+const getUserProjects = async(req,res)=>{
+    const {userId} = req.user;
+    const projects = await Project.find({adminId:userId})
+    res.status(StatusCodes.OK).json({projects})
+}
+const getAllProjects = async(req,res)=>{
+    const {isSuperAdmin} = req.user;
+
+    if(!isSuperAdmin)
+        throw new UnauthenticatedError("You have to be super admin to get all projects")
+    
+    const projects = await Project.find({})
+    res.status(StatusCodes.OK).json({projects})
+}
+
+
+module.exports = {addProjectSuper,deleteProject,getUserProjects,getAllProjects}

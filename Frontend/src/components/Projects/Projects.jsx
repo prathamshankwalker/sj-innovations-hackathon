@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Button } from "@mui/material";
 import "./Projects.css";
 import MediaCard from "../Cards/card";
@@ -8,6 +8,12 @@ import Loader from "../Loader/Loader";
 
 const Projects = () => {
   const {loading,projects} = useSelector((state)=>state.project);
+  const dispatch = useDispatch()
+  
+  useEffect(()=>{
+    dispatch(getUserProjects())
+  },[dispatch])
+
   return (
     loading?<Loader/>:
     <div className="main">
