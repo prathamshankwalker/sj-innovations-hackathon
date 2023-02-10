@@ -16,7 +16,7 @@ const Navbar = () => {
 
     const [isClicked,setClicked] = useState(false)
     const [isDropdownOpen , setDropdownOpen ] = useState('hide');
-    const {isAuthenticated,message} = useSelector((state)=>state.user);
+    const {isAuthenticated,message,user,loading} = useSelector((state)=>state.user);
 
     const { toggleMenu } = useContext(MenuContext);
       
@@ -33,7 +33,7 @@ const Navbar = () => {
     }
 
   return (
-    isAuthenticated?(
+    isAuthenticated && !loading ?(
     <div className='nav-bar'>
       {!isClicked?<DensityMedium onClick={handleClick}/>: <ArrowBack onClick={handleClick}/> }
       <div>
@@ -42,7 +42,7 @@ const Navbar = () => {
           <div className={isDropdownOpen}>
             <div>
               <AccountCircle/>
-              <Typography variant='h6'>username</Typography>
+              <Typography variant='h6'>{user.username}</Typography>
             </div>
             <div onClick={handleLogout}>
               <Logout/>

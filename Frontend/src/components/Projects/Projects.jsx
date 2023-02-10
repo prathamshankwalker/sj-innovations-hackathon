@@ -2,9 +2,14 @@ import React from "react";
 import { Button } from "@mui/material";
 import "./Projects.css";
 import MediaCard from "../Cards/card";
+import {useDispatch,useSelector} from 'react-redux'
+import {getUserProjects} from '../../actions/project'
+import Loader from "../Loader/Loader";
 
 const Projects = () => {
+  const {loading,projects} = useSelector((state)=>state.project);
   return (
+    loading?<Loader/>:
     <div className="main">
       <div className="header">
         <Button variant="contained">Add Project</Button>
