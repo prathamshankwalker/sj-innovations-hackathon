@@ -1,0 +1,15 @@
+.header {
+  padding: 20px;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+.header > Button {
+  margin-right: auto;
+}
+.Body {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
