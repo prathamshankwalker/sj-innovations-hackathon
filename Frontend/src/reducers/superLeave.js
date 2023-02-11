@@ -14,6 +14,17 @@ export const superLeaveReducer = createReducer(initialState, {
     state.error = action.payload;
     state.loading = false;
   },
+  userLeaveRequest: (state, action) => {
+    state.loading = true;
+  },
+  userLeaveSuccess: (state, action) => {
+    state.userLeaves = action.payload;
+    state.loading = false;
+  },
+  userLeaveFailure: (state, action) => {
+    state.error = action.payload;
+    state.loading = false;
+  },
 
   clearError: (state, action) => {
     state.error = null;

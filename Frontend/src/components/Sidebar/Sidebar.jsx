@@ -47,10 +47,6 @@ const Sidebar = () => {
           { tab==="/resources"?<AddBox style={{color:'black'}}/>:<AddBoxOutlined/>}
           <Typography variant='h6'>Resources</Typography>
         </Link>
-        <Link to="/status" onClick={()=>setTab("/status")}>
-          { tab==="/status"?<Assessment style={{color:'black'}}/>:<AssessmentOutlined/>}
-          <Typography variant='h6'>Status</Typography>
-        </Link>
         <Link to="/leaves" onClick={()=>setTab("/leaves")}>
           { tab==="/leaves"?<PostAdd style={{color:'black'}}/>:<PostAddOutlined/>}
           <Typography variant='h6'>Leaves</Typography>

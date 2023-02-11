@@ -22,3 +22,23 @@ export const superLeave = () => async (dispatch) => {
     });
   }
 };
+export const userLeaves = () => async (dispatch) => {
+  const url = "/api/v1/admin/leave/user";
+  try {
+    dispatch({
+      type: "userLeaveRequest",
+    });
+    const { data } = await axios.get(url);
+    console.log(data.leaves);
+    dispatch({
+      type: "userLeaveSuccess",
+      payload: data.leaves,
+    });
+  } catch (error) {
+    console.log(error.response.data, error.response.status);
+    dispatch({
+      type: "userLeaveFailure",
+      payload: error.response.data,
+    });
+  }
+};
