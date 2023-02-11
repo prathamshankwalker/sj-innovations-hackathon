@@ -57,7 +57,11 @@ const deleteProject = async(req,res)=>{
     const project = await Project.findByIdAndDelete(id)
     res.status(StatusCodes.OK).json({msg:"Project Deleted"})
 }
-
+const getSingleProject = async(req,res)=>{
+    const {id} = req.params;
+    const project = await Project.findById(id)
+    res.status(StatusCodes.OK).json({project})
+}
 const getUserProjects = async(req,res)=>{
     const {userId} = req.user;
     const projects = await Project.find({adminId:userId})
@@ -74,4 +78,4 @@ const getAllProjects = async(req,res)=>{
 }
 
 
-module.exports = {addProjectSuper,deleteProject,getUserProjects,getAllProjects,assignResource}
+module.exports = {addProjectSuper,deleteProject,getUserProjects,getAllProjects,assignResource,getSingleProject}

@@ -34,5 +34,13 @@ const getResourceInfo = async (req,res)=>{
     const assignment = await Assignment.find({resource_id:id});
     res.status(StatusCodes.OK).json({user:user,assignment:assignment})
 }
+const getAllResources = async (req,res)=>{
+    const {isSuperAdmin} = req.user;
+    if(!isSuperAdmin)
+        throw new UnauthenticatedError("You have to be super admin to get all resource")
+    
+    const resources = await Resource.find({});
+    res.status(StatusCodes.OK).json({resources})
+}
 
-module.exports = {addResource,deleteResource,getResourceInfo}
+module.exports = {addResource,deleteResource,getResourceInfo,getAllResources}
