@@ -16,12 +16,22 @@ const SingleResource = () => {
 
   const machineLearningModel = async(gender,wfh,desig,no_of_hours,fatigue_score) =>{
     try{
-      const {data} = await axios.post("http://127.0.0.1:8000/ml-model/",
-        {gender,wfh,desig,no_of_hours,fatigue_score},{
-            headers:{
-                "Content-Type":"application/json"
-            }
+      const response = await fetch(`http://127.0.0.1:8000/ml-model/`, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            "gender":gender,
+            "wfh":wfh,
+            "desig":desig,
+            "no_of_hours":no_of_hours,
+            "fatigue_score":fatigue_score
         })
+      });
+    const data = await response.json()
       console.log(data)
     }catch(err){
       console.log(err)
@@ -30,7 +40,7 @@ const SingleResource = () => {
 
   useEffect(() => {
     dispatch(getResourceInfo(id));
-    machineLearningModel(true,true,4,7,8)
+    //machineLearningModel(true,true,4,7,8)
   }, []);
 
   const { resource, loading } = useSelector((state) => state.resource);
