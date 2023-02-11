@@ -6,6 +6,7 @@ import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { getSingleProject } from "../../actions/project";
 import EmployeeDetail from "../EmployeeDetails/EmployeeDetail";
+import { Button } from "@mui/material";
 
 const SingleProject = () => {
   const { id } = useParams();
@@ -21,31 +22,48 @@ const SingleProject = () => {
   return loading || !project ? (
     <Loader />
   ) : (
-    <div>
-      <div>
-        <h2>Project Details</h2>
-        Project id <h3>{project._id}</h3>
-        Project Admin <h3>{project.adminId}</h3>
-        Project Title<h3>{project.title}</h3>
-        Project Status<h3>{project.status}</h3>
-        Project Type<h3>{project.type}</h3>
-        Project Deadline<h3>{project.deadline}</h3>
-        Project Description<h3>{project.desc}</h3>
-        Project Creation Date<h3>{project.createdAt}</h3>
+    <div className="mainContainer">
+      <h1>Project Details</h1>
+      <div className="container">
+        <div className="Header">
+          <div className="HeaderLeft">
+            <h2>{project.title}</h2>
+            <br />
+            Project id <h3>{project._id}</h3>
+            <br />
+            Project Admin <h3>{project.adminId}</h3>
+          </div>
+          <div className="HeaderRight">
+            Status
+            <h3>{project.status}</h3>
+            <br />
+            Project Type<h3>{project.type}</h3>
+            <br />
+          </div>
+        </div>
+        <div className="containerBody">
+          <div className="containerBodyLeft">
+            Project Deadline<h3>{project.deadline}</h3>
+            <br />
+            Project Creation Date<h3>{project.createdAt}</h3>
+            <br />
+          </div>
+          Project Description<h3>{project.desc}</h3>
+        </div>
       </div>
       <div>
         <h2>Resources</h2>
         <div>
           {project.resources.length !=0? project.resources.map((ele) => (
             <div>
-              <h4>{ele}</h4>
-              <button
+              <Button
                 onClick={() => {
                   navigate(`/resource/${ele}`);
                 }}
+                variant="text"
               >
-                View Resource
-              </button>
+                {ele}
+              </Button>
             </div>
           )):<h2>No resources assigned</h2>}
         </div>
