@@ -18,6 +18,7 @@ import SingleResource from "./components/singleResource/singleResource";
 import {loadUser} from './actions/user'
 import Loader from "./components/Loader/Loader";
 import AssignLeave from "./components/AssignLeave/AssignLeave";
+import AssignProject from "./components/AssignProject/AssignProject";
 import EmployeeDetail from "./components/EmployeeDetails/EmployeeDetail";
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/admins" element={isAuthenticated?<AllAdmins/>:<SignIn/>}></Route>
 
         <Route path="/leave/:id" element={isAuthenticated?<AssignLeave/>:<SignIn/>}></Route>
+        <Route path="/assign-project/:id" element={isAuthenticated?<AssignProject/>:<SignIn/>}></Route>
       </Routes>
     </>
   );

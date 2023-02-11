@@ -184,7 +184,9 @@ export default function CollapsibleTable() {
                 <TableCell align="right"><Button onClick={()=>{
                   navigate(`/leave/${ele.id}`)
                 }}>Assign Leave</Button></TableCell>
-                <TableCell align="right"><Button>Assign Project</Button></TableCell>
+                <TableCell align="right"><Button onClick={()=>{
+                  navigate(`/assign-project/${ele.id}`)
+                }}>Assign Project</Button></TableCell>
               </TableRow>
             ))}
           </TableBody>

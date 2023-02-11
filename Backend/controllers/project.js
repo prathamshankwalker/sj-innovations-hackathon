@@ -28,7 +28,8 @@ const assignResource = async(req,res)=>{
     
     const {_doc} = await Resource.findById(resourceId)
     const hours_worked = _doc.hours_worked + hours
-    await Resource.findByIdAndUpdate(resourceId,{hours_worked:hours_worked})
+    await Resource.findByIdAndUpdate(resourceId,{hours_worked:hours_worked,$push:{projects:projectId}})
+    await Project.findByIdAndUpdate(projectId,{$push:{resources:resourceId}})
     
     switch(week){
         case 'week1':

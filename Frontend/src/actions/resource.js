@@ -43,3 +43,26 @@ export const addResource = (name,dob,gender,WFH,designation,fatigue) => async(di
         })
     }    
 }
+export const assignResource = (resourceId,projectId,week,hours) => async(dispatch)=>{
+    try {
+        dispatch({
+            type:"AssignResourceRequest"
+        })
+        const {data} = await axios.post("/api/v1/admin/assign-resource",
+        {resourceId,projectId,week,hours},{
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+        dispatch({
+            type:"AssignResourceSuccess",
+            payload:"Resource Assigned"
+        })
+    } catch (error) {
+        console.log(error.response.data,error.response.status)
+        dispatch({
+            type:"AssignResourceFailure",
+            payload:error.response.data
+        })
+    }    
+}

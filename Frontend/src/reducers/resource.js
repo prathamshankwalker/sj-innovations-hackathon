@@ -26,6 +26,17 @@ export const resourceReducer = createReducer(initialState,{
         state.error = action.payload
         state.loading = false;
     },
+    AssignResourceRequest: (state,action)=>{
+        state.loading = true;
+    },
+    AssignResourceSuccess: (state,action)=>{
+        state.message = action.payload
+        state.loading = false;
+    },
+    AssignResourceFailure: (state,action)=>{
+        state.error = action.payload
+        state.loading = false;
+    },
     clearError:(state,action)=>{
         state.error = null
     },
