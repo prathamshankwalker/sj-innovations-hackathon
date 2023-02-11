@@ -13,7 +13,16 @@ export default function MediaCard(props) {
   const navigate = useNavigate();
   return (
     // add onclick
-    <Card className="card" key={props.key} sx={{ maxWidth: 345 }}>
+    <div
+      className="card"
+      key={props.key}
+      style={{
+        width: "200px",
+        height: "220px",
+        borderRadius: "20px",
+        backgroundColor: "rgb(236, 234, 234)",
+      }}
+    >
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {props.ProjectName}
@@ -32,6 +41,6 @@ export default function MediaCard(props) {
       >
         View Details
       </Button>
-    </Card>
+    </div>
   );
 }
