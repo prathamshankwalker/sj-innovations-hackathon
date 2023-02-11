@@ -18,14 +18,12 @@ const Projects = () => {
     <Loader />
   ) : (
     <div className="main">
-      <div className="header">
-        <Button variant="contained">Add Project</Button>
-      </div>
       <div className="Body">
         {projects.map((ele) => (
           <div>
             <MediaCard
               key={ele._id}
+              id={ele._id}
               type={ele.type}
               status={ele.status}
               ProjectName={ele.title}
