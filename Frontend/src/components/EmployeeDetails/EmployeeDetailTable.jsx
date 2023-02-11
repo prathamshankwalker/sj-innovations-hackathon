@@ -3,23 +3,25 @@ import { useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
 import "./EmployeeDetailTable.css";
 const EmployeeDetailTable = (props) => {
-  const { Detail, Detail_loading } = useSelector((state) => state.Detail);
-  var week = Detail.assignment[0].w1;
+  // const { Detail, Detail_loading } = useSelector((state) => state.Detail);
+  const { resource, loading } = useSelector((state) => state.resource);
+
+  var week = resource.assignment[0].w1;
   if (Object.keys(props).length == 1) {
-    week = Detail.assignment[0].w1;
+    week = resource.assignment[0].w1;
   } else if (Object.keys(props).length == 2) {
-    week = Detail.assignment[0].w2;
+    week = resource.assignment[0].w2;
   } else if (Object.keys(props).length == 3) {
-    week = Detail.assignment[0].w3;
+    week = resource.assignment[0].w3;
   } else if (Object.keys(props).length == 4) {
-    week = Detail.assignment[0].w4;
+    week = resource.assignment[0].w4;
   }
 
-  return Detail_loading ? (
+  return loading ? (
     <Loader />
   ) : (
     <>
-      {console.log(Detail)}
+      {console.log(resource.assignment[0])}
       {console.log(Object.keys(props).length)}
       <table className="styled-table">
         <thead>
@@ -30,7 +32,8 @@ const EmployeeDetailTable = (props) => {
         </thead>
         <tbody>
           {/* {console.log(week[0])} */}
-          {week.map((ele) => (
+
+          {week?.map((ele) => (
             <tr>
               <td>{ele.projectId}</td>
               <td>{ele.hours}</td>
@@ -40,8 +43,17 @@ const EmployeeDetailTable = (props) => {
       </table>
 
       <div className="childLowerContainer">
-        <div className="childLowerLeftContainer"> Stress Bar</div>
-        <div className="childLowerRightContainer"> Calculation</div>
+        <div className="childLowerLeftContainer">
+          {" "}
+          <h4>Stress Bar:-</h4>
+          {resource?.user?.fatigue}
+          <div className="childLowerRightContainer">
+            <h4>Available:-</h4>
+            {resource?.user?.hours_available - resource?.user?.hours_worked}
+            <h4>Assigned:-</h4>
+            {resource?.user?.hours_worked}
+          </div>
+        </div>
       </div>
     </>
   );

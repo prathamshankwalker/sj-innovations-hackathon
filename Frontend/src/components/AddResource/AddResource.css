@@ -1,0 +1,16 @@
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: white;
+  padding: 90px;
+}
+.container > h1 {
+  margin-bottom: 20px;
+  font-size: 50px;
+}
+.lb {
+  font-weight: lighter;
+  color: #898787;
+  font-size: small;
+  margin-bottom: 10px;
+}

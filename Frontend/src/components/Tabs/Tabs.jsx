@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
-import { useTheme } from "@mui/material/styles";
+import { rgbToHex, useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -55,7 +55,7 @@ export default function Tabss(props) {
   };
 
   return (
-    <Box sx={{ bgcolor: "background.paper", width: 1196 }}>
+    <Box sx={{ bgcolor: "background.paper", width: 1156 }}>
       <AppBar position="static">
         <Tabs
           value={value}

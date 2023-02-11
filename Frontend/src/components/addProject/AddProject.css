@@ -1,99 +1,45 @@
-.main-block {
-  max-width: 340px;
-  min-height: 460px;
-  padding: 10px 0;
-  margin: auto;
-  border-radius: 5px;
-  border: solid 1px #ccc;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
-  background: #ebebeb;
+/* Style inputs with type="text", select elements and textareas */
+input[type="text"],
+select,
+textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
 }
-form {
-  margin: 0 30px;
-}
-.account-type,
-.gender {
-  margin: 15px 0;
-}
-input[type="radio"] {
-  display: none;
-}
-label#icon {
-  margin: 0;
-  border-radius: 5px 0 0 5px;
-}
-label.radio {
-  position: relative;
-  display: inline-block;
-  padding-top: 4px;
-  margin-right: 20px;
-  text-indent: 30px;
-  overflow: visible;
+
+/* Style the submit button with a specific background color etc */
+input[type="submit"] {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
-label.radio:before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #1c87c9;
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type="submit"]:hover {
+  background-color: #45a049;
 }
-label.radio:after {
-  content: "";
-  position: absolute;
-  width: 9px;
-  height: 4px;
-  top: 8px;
-  left: 4px;
-  border: 3px solid #fff;
-  border-top: none;
-  border-right: none;
-  transform: rotate(-45deg);
-  opacity: 0;
-}
-input[type="radio"]:checked + label:after {
-  opacity: 1;
-}
-input[type="text"],
-input[type="password"] {
-  width: calc(100% - 57px);
-  height: 36px;
-  margin: 13px 0 0 -5px;
-  padding-left: 10px;
-  border-radius: 0 5px 5px 0;
-  border: solid 1px #cbc9c9;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.09);
-  background: #fff;
-}
-input[type="password"] {
-  margin-bottom: 15px;
-}
-#icon {
-  display: inline-block;
-  padding: 9.3px 15px;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.09);
-  background: #1c87c9;
-  color: #fff;
-  text-align: center;
-}
-.btn-block {
-  margin-top: 10px;
-  text-align: center;
-}
-button {
-  width: 100%;
-  padding: 10px 0;
-  margin: 10px auto;
+
+/* Add a background color and some padding around the form */
+.container {
   border-radius: 5px;
-  border: none;
-  background: #1c87c9;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
+  background-color: white;
+  padding: 90px;
 }
-button:hover {
-  background: #26a9e0;
+.container > h1 {
+  margin-bottom: 20px;
+  font-size: 50px;
+}
+.lb {
+  font-weight: lighter;
+  color: #898787;
+  font-size: small;
+  margin-bottom: 10px;
 }
