@@ -36,7 +36,7 @@ const SingleProject = () => {
       <div>
         <h2>Resources</h2>
         <div>
-          {project.resources.map((ele) => (
+          {project.resources.length !=0? project.resources.map((ele) => (
             <div>
               <h4>{ele}</h4>
               <button
@@ -47,7 +47,7 @@ const SingleProject = () => {
                 View Resource
               </button>
             </div>
-          ))}
+          )):<h2>No resources assigned</h2>}
         </div>
       </div>
     </div>

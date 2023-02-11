@@ -6,6 +6,7 @@ import { getResourceInfo } from "../../actions/resource";
 import { Avatar } from "@mui/material";
 import Loader from "../Loader/Loader";
 import Tabss from "../Tabs/Tabs";
+import axios from 'axios'
 import { CChart } from "@coreui/react-chartjs";
 
 const SingleResource = () => {
@@ -13,8 +14,23 @@ const SingleResource = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const machineLearningModel = async(gender,wfh,desig,no_of_hours,fatigue_score) =>{
+    try{
+      const {data} = await axios.post("http://127.0.0.1:8000/ml-model/",
+        {gender,wfh,desig,no_of_hours,fatigue_score},{
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+      console.log(data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
     dispatch(getResourceInfo(id));
+    machineLearningModel(true,true,4,7,8)
   }, []);
 
   const { resource, loading } = useSelector((state) => state.resource);

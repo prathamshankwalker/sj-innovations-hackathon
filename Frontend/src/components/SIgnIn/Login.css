@@ -1,6 +1,6 @@
 .login {
   height: 100vh;
-  background-image: linear-gradient(to right, #ebfaef, #7ff087);
+  background-image: linear-gradient(to right, #ebfaef, lightblue);
   display: flex;
   align-items: center;
   justify-content: center;
