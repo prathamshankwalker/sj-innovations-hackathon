@@ -11,7 +11,10 @@ import SignIn from "./components/SIgnIn/SignIn";
 import AddProject from "./components/addProject/AddProject";
 import AddResource from "./components/AddResource/AddResource"
 import AllProjects from "./components/allProjects/AllProjects"
+import AllAdmins from "./components/allAdmins/AllAdmins"
 import Activity from "./components/Activity/Activity"
+import SingleProject from "./components/singleProject/SingleProject";
+import SingleResource from "./components/singleResource/singleResource";
 import {loadUser} from './actions/user'
 import Loader from "./components/Loader/Loader";
 
@@ -37,11 +40,15 @@ function App() {
         <Route path="/status" element={isAuthenticated?<Status/>:<SignIn/>}></Route>
         <Route path="/leaves" element={isAuthenticated?<Leaves/>:<SignIn/>}></Route>
         
+        <Route path="/project/:id" element={isAuthenticated?<SingleProject/>:<SignIn/>}></Route>
+        <Route path="/resource/:id" element={isAuthenticated?<SingleResource/>:<SignIn/>}></Route>
+
         {/*Super Admin*/}
         <Route path="/" element={isAuthenticated? user.isSuperAdmin ? <AllProjects/>:<Projects/>:<SignIn/>}></Route>
         <Route path="/add-project" element={isAuthenticated?<AddProject/>:<SignIn/>}></Route>
         <Route path="/add-resource" element={isAuthenticated?<AddResource/>:<SignIn/>}></Route>
         <Route path="/activity" element={isAuthenticated?<Activity/>:<SignIn/>}></Route>
+        <Route path="/admins" element={isAuthenticated?<AllAdmins/>:<SignIn/>}></Route>
       </Routes>
     </>
   );

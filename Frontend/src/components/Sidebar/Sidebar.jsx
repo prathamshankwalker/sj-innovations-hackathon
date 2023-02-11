@@ -24,12 +24,17 @@ const Sidebar = () => {
           <Typography variant='h6'>Resources</Typography>
         </Link>
         <Link to="/add-project" onClick={()=>setTab("/add-project")}>
-          { tab==="/add-project"?<Assessment style={{color:'black'}}/>:<AssessmentOutlined/>}
+          { tab==="/add-project"?<PostAdd style={{color:'black'}}/>:<PostAddOutlined/>}
           <Typography variant='h6'>Projects</Typography>
+
         </Link>
         <Link to="/activity" onClick={()=>setTab("/activity")}>
-          { tab==="/activity"?<PostAdd style={{color:'black'}}/>:<PostAddOutlined/>}
+          { tab==="/activity"?<Assessment style={{color:'black'}}/>:<AssessmentOutlined/>}
           <Typography variant='h6'>Activity</Typography>
+        </Link>
+        <Link to="/admins" onClick={()=>setTab("/admin")}>
+          { tab==="/admins"?<Group style={{color:'black'}}/>:<GroupOutlined/>}
+          <Typography variant='h6'>Admins</Typography>
         </Link>
     </div>
     ) :(

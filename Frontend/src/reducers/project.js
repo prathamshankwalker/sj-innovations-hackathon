@@ -15,6 +15,28 @@ export const projectReducer = createReducer(initialState,{
         state.error = action.payload
         state.loading = false;
     },
+    GetSingleProjectRequest: (state,action)=>{
+        state.loading = true;
+    },
+    GetSingleProjectSuccess: (state,action)=>{
+        state.project = action.payload
+        state.loading = false;
+    },
+    GetSingleProjectFailure: (state,action)=>{
+        state.error = action.payload
+        state.loading = false;
+    },
+    GetAllProjectsRequest: (state,action)=>{
+        state.loading = true;
+    },
+    GetAllProjectsSuccess: (state,action)=>{
+        state.projects = action.payload
+        state.loading = false;
+    },
+    GetAllProjectsFailure: (state,action)=>{
+        state.error = action.payload
+        state.loading = false;
+    },
     
     clearError:(state,action)=>{
         state.error = null

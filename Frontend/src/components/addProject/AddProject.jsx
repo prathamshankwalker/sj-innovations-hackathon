@@ -1,57 +1,38 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
+import axios from 'axios'
+import '../../axios'
 import "./AddProject.css";
+import { useDispatch } from "react-redux";
+
 
 function AddProject() {
+  const dispatch = useDispatch()
+  const [allResources,setResources] = useState(null)
+
+  const getAllResources = async() =>{
+    const {data} = await axios.get(`/api/v1/admin/all/resource`)
+    
+    const arr = data.resources.map((ele)=>{
+      return {
+        "id":ele._id,
+        "name" : ele.name,
+        "gender":ele.gender,
+        "designation":ele.designation,
+        "hours_available":ele.hours_available
+      }
+    })
+    setResources(arr)
+    //console.log(allResources)
+  }
+  
+  useEffect(()=>{
+    getAllResources()
+  },[])
+
   return (
     <div>
       <h1>Add Project</h1>
-      {/* <div className="main-block">
-        <h1>Add Project</h1>
-        <form action="/">
-          <div className="account-type">
-            <input
-              type="text"
-              placeholder="Project Name"
-              value=""
-              name="account"
-            />
-          </div>
-          <div className="account-type">
-            <input
-              type="text"
-              placeholder="Description"
-              value=""
-              name="account"
-            />
-          </div>
-          <div className="account-type">
-            <p>Type</p>
-            <select required>
-              <option value="1">Billable</option>
-              <option value="2">Non-Billable</option>
-            </select>
-          </div>
-          <div className="account-type">
-            <p>Status</p>
-            <select required>
-              <option value="1">Confirmed</option>
-              <option value="2">Probable</option>
-            </select>
-          </div>
-          <div className="account-type">
-            <p>Admin Id</p>
-            <select required>
-              <option value="1">192912</option>
-              <option value="2">1982318</option>
-            </select>
-          </div>
-          <div className="btn-block">
-            <button type="submit" href="/">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div> */}
+      <form></form>
     </div>
   );
 }
