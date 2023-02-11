@@ -1,0 +1,21 @@
+.mainContainer {
+  padding: 0px 30px;
+}
+.container {
+}
+.Header {
+  display: flex;
+  flex-direction: row;
+  column-gap: 300px;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+.HeaderRight {
+  margin-top: 30px;
+}
+.containerBodyLeft {
+  margin-bottom: 20px;
+}
+.resource {
+  margin-left: 40px;
+}
