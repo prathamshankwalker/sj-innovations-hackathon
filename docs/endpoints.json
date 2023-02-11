@@ -1,0 +1,499 @@
+{
+	"info": {
+		"_postman_id": "76879caa-3831-4283-83b2-660ba8ae0aef",
+		"name": "sj-hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21176723"
+	},
+	"item": [
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json()\r",
+							"pm.globals.set(\"accessToken\",jsonData.jwt_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sachin@gmail.com\",\r\n    \"username\":\"sachin\",\r\n    \"password\":\"test123\",\r\n    \"isSuperAdmin\":false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json()\r",
+							"pm.globals.set(\"accessToken\",jsonData.jwt_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"edgar@gmail.com\",\r\n    \"password\":\"test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/auth/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "load user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/63e5f31b918c5fd94d3bae12",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"63e5f31b918c5fd94d3bae12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"adminId\":\"63e5f31b918c5fd94d3bae12\",\r\n    \"title\":\"project 5\",\r\n    \"resources\":[],\r\n    \"status\":\"confirmed\",\r\n    \"type\":\"billable\",\r\n    \"desc\":\"Test description\",\r\n    \"deadline\":\"2022-03-22\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/add-project",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"add-project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete project",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/project/63e72627e7d6ab7f8cba79e9",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"project",
+						"63e72627e7d6ab7f8cba79e9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add resource",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"andrew smith\",\r\n    \"dob\":\"1990-10-22\",\r\n    \"gender\":\"male\",\r\n    \"WFH\":true,\r\n    \"designation\":\"junior dev\",\r\n    \"fatigue\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/add-resource",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"add-resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete resource",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/resource/63e6b6811eb0623750792d12",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"resource",
+						"63e6b6811eb0623750792d12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/project/all",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"project",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/project/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"project",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assign resource",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"resourceId\":\"63e616b4f73f063140147e59\",\r\n    \"projectId\":\"63e61b2b19c99134460f688a\",\r\n    \"week\":\"week1\",\r\n    \"hours\":4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/assign-resource",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"assign-resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get resource info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/resource/63e677027e4b6ae5a703e2be",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"resource",
+						"63e677027e4b6ae5a703e2be"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add leave",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"resourceId\":\"63e616b4f73f063140147e59\",\r\n    \"reason\":\"wedding\",\r\n    \"day\":\"2022-02-19\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/assign-leave",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"assign-leave"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all leaves",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/leave/all",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"leave",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user leaves",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/leave/user",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"leave",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single project",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/single-project/63e61b2b19c99134460f688a",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"single-project",
+						"63e61b2b19c99134460f688a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all resources",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/admin/all/resource",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"all",
+						"resource"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,8 @@
 
 ## RESOURCE BOOKING SYSTEM
 
+As there are multiple resources working on multiple projects it becomes difficult to manage the workload and get a proper idea which resources are under or over-utilized. Hence build a web application portal to do the projection for members with respect to projects on a weekly basis. Also if the resources are on leave or there is a holiday the capacity of the members will have to be reduced accordingly.
+
 ### 🔗 Content
 
 - [Overview](#resource-booking-system)
@@ -54,7 +56,6 @@ As there are multiple resources working on multiple projects it becomes difficul
 - Employee stress/ happiness tracking using machine learning.
 
 
-
 ### 🧰 Tech Stack
 
 - **`BACKEND`** : Node JS, Express JS, Django
@@ -66,9 +67,121 @@ As there are multiple resources working on multiple projects it becomes difficul
 - **`Machine Learning`** : Numpy, Scikit-Learn
 
 
+### 🛠 API Reference
+
+- **Endpoints Import Link (POSTMAN)** : https://api.postman.com/collections/21176723-76879caa-3831-4283-83b2-660ba8ae0aef?access_key=PMAT-01GRXDT6WTN828QXB6MHR7GRV8
+
+- **Endpoints Import JSON file** : [here](docs/endpoints.json)
+
+
+### 🔐 Environment Variables
+
+To run this project, you will need to add the following environment variables to your **.env** file
+
+- `MONGO_URI`  -  Mongo DB Connection URL
+
+- `JWT_SECRET`  -  JWT Authenticaion Key
+
+- `JWT_LIFETIME`  -  JWT Token Expiry Time
+
+![ENV file](docs/env.png)
+
+
+### 💻 Run Locally
+
+***Step#1 : Clone Project Repository***
+
+```bash
+git clone https://github.com/prathamshankwalker/sj-innovations-hackathon.git
+```
+***Step#2 : Go to Project Directory***
+
+```bash
+cd sj-innovations-hackathon
+```
+
+***Step#3 : Run Backend Server***
+
+```bash
+cd backend
+```
+- Install Dependencies
+```bash
+npm install
+```
+
+- add *".env"* file
+    - **In Windows :**
+    ```bash
+        copy .env.example .env
+    ```
+    - **In Linux or MacOS :**
+    ```bash
+        cp .env.example .env
+    ```
+- Enter Your Credentials in the *".env"* file. Refer [Environment Variables](#-environment-variables)
+
+- Runserver
+```bash
+npm test
+```
+
+***Step#4 : Run Backend Server***
+
+```bash
+cd frontend
+```
+- Install Dependencies
+```bash
+npm install
+```
+- Runserver
+```bash
+npm run dev
+```
+
+***Step#5 : Run ML Server***
+
+```bash
+cd machine-learning
+```
+
+- If *virtualenv* is not istalled :
+```bash
+pip install virtualenv && virtualenv env
+```
+
+- Turn On Virtual Environment
+
+- **In Windows :**
+```bash
+    env/Scripts/activate
+```
+- **In Linux or MacOS :**
+```bash
+    source env/bin/activate
+```
+
+- Install Dependencies
+
+```bash
+pip install --upgrade pip -r requirements.txt
+```
+
+- Runserver
+
+```bash
+python manage.py runserver
+```
+
+*Check the terminal if any error.*
+
+***Step#6 : Open Browser***
+
+- Open `http://127.0.0.1:8000/` or `http://localhost:8000/` on your browser.
+
+
 ### 📄 Documentation
 
 The docs folder contain all the project documentations and screenshots of the project.You can go through the presentation [here](docs/project-report.pdf)
-
-POSTMAN : https://api.postman.com/collections/21176723-76879caa-3831-4283-83b2-660ba8ae0aef?access_key=PMAT-01GRXDT6WTN828QXB6MHR7GRV8
 
