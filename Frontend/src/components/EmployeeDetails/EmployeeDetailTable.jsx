@@ -49,7 +49,7 @@ const EmployeeDetailTable = (props) => {
           {resource?.user?.fatigue}
           <div className="childLowerRightContainer">
             <h4>Available:-</h4>
-            {resource?.user?.hours_available - resource?.user?.hours_worked}
+            {resource?.user?.hours_available}
             <h4>Assigned:-</h4>
             {resource?.user?.hours_worked}
           </div>
