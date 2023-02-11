@@ -1,6 +1,6 @@
 import "./App.css";
-import {useEffect} from 'react'
-import {useDispatch,useSelector} from 'react-redux'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Projects from "./components/Projects/Projects";
@@ -17,20 +17,21 @@ import SingleProject from "./components/singleProject/SingleProject";
 import SingleResource from "./components/singleResource/singleResource";
 import {loadUser} from './actions/user'
 import Loader from "./components/Loader/Loader";
+import EmployeeDetail from "./components/EmployeeDetails/EmployeeDetail";
 
 function App() {
   const dispatch = useDispatch();
-  const {isAuthenticated,loading,user} = useSelector((state)=>state.user);
+  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
 
-  if (user)
-    console.log(user.isSuperAdmin,isAuthenticated)
+  if (user) console.log(user.isSuperAdmin, isAuthenticated);
 
-  useEffect(()=>{
-    dispatch(loadUser())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
 
-  return (
-    loading?<Loader/>:
+  return loading ? (
+    <Loader />
+  ) : (
     <>
       <Navbar />
       <Routes>

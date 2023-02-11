@@ -6,21 +6,22 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./card.css";
+import { Chip } from "@mui/material";
 
 export default function MediaCard(props) {
   return (
-    <Card className="card" sx={{ maxWidth: 345 }}>
+    // add onclick
+    <Card className="card" key={props.key} sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {props.ProjectName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {props.ProjectDetails}
+          <Chip label={props.type} />
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Chip label={props.status} color="primary" />
       </CardActions>
     </Card>
   );
